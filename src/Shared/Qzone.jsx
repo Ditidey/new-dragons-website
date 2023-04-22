@@ -14,7 +14,7 @@ const Qzone = () => {
             </div>
             <div className='position-relative'>
                 <img src={bg} alt=""  />
-                 <div class="position-absolute">
+                 <div className="position-absolute">
                  <h4  >Create an amazing News paper</h4>
                 <p >Explores thousands of option and easy to read. One click find many resources and more.</p>
                 <Button   variant="danger">Learn More</Button>

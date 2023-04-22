@@ -1,0 +1,6 @@
+/***
+*
+* using moment.js for setup time
+* using react marquee for moving text from left to right
+* using express.js to loading data
+**/
