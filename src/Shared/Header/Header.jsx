@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '.././../assets/logo.png';
 import moment from 'moment';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import Marquee from "react-fast-marquee";
+import { FaUserCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { contextProvider } from '../../provider/AuthProvider';
 
 const Header = () => {
+    const {user, userLogout} = useContext(contextProvider);
+
+    const handleLogout = () =>{
+        userLogout()
+        .then(result=>{})
+        .catch(error =>{})
+    }
     return (
         <Container>
             <div className='text-center'>
@@ -27,8 +37,11 @@ const Header = () => {
                             <Nav.Link href=''>Career</Nav.Link>
                         </Nav>
                         <Nav>
-                            <Nav.Link href=''>Profile</Nav.Link>
-                            <Nav.Link href=''><Button variant="dark">Log in</Button></Nav.Link>
+                            <Nav.Link href=''>{!user ? <FaUserCircle></FaUserCircle> : user.email}</Nav.Link>
+                            <Nav.Link href=''> {
+                                user ? <Link><Button variant="dark" onClick={handleLogout}>Log Out</Button></Link> :
+                                <Link to='/login'><Button variant="dark">Log in</Button></Link>
+                            }</Nav.Link>
                              
                         </Nav>
                       </Navbar.Collapse>
